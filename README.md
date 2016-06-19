@@ -32,6 +32,8 @@ http://{server}/{mark}/{storage}/{size}/{path_to_file}?{params}
 #####Params:#####
   - <b>crop</b> - sides fixed when cropping (top, right, bottom, left)
   - <b>q</b> - result image quality (default set from command line "-q")
+  - <b>format</b> - image format, for now supports only `webp` to return
+    WebP-encoded image
 
 ##### Example: #####
 

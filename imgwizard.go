@@ -433,7 +433,6 @@ func parseVars(req *http.Request) map[string]string {
 }
 
 func fetchImage(rw http.ResponseWriter, req *http.Request) {
-	acceptedTypes := strings.Split(req.Header.Get("Accept"), ",")
 	noCacheKey := req.Header.Get(NO_CACHE_HEADER)
 	onlyCache := req.Header.Get(ONLY_CACHE_HEADER)
 	params := parseVars(req)
@@ -456,7 +455,7 @@ func fetchImage(rw http.ResponseWriter, req *http.Request) {
 		sett.Options.Quality, _ = strconv.Atoi(q)
 	}
 
-	sett.Options.Webp = stringExists(WEBP_HEADER, acceptedTypes)
+	sett.Options.Webp = req.FormValue("format") == "webp"
 	sett.Options.Width, _ = strconv.Atoi(sizes[0])
 	sett.Options.Height, _ = strconv.Atoi(sizes[1])
 
